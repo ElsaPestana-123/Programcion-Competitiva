@@ -19,7 +19,8 @@ The second line contains n integers a1,a2,…,an (1≤ai≤109).
 The array is given in non-decreasing order, i.e., a1≤a2≤⋯≤an.
 
 Output
-Print a single integer — the maximum number of elements that can be made equal to the minimum value after at most k operations.
+Print a single integer — the maximum number of elements that can be made equal to the minimum 
+value after at most k operations.
 */
 #include <bits/stdc++.h>
 using namespace std;

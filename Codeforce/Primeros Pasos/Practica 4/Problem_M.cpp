@@ -40,6 +40,12 @@ int main(){
     long long n, m;
     cin >> n >> m;
 
+    if (n == m) {
+       cout << "-2147483648\n";
+       cout << "+-\n";
+       return 0;
+    }
+
     string signos;
 
     long long escalon = 0;

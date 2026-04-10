@@ -50,3 +50,78 @@ one pair of consumptions that produces those numbers.
 Output
 Print a single integer — the amount you have to pay (in coins).
 */
+#include <bits/stdc++.h>
+using namespace std;
+
+long long dineroConsumo(long long monedas){
+
+    if(monedas <= 200){
+
+        return monedas /2;
+
+    } else if (monedas <= 29900){
+
+        return 100 +(monedas -200) /3;
+
+    } else if (monedas <= 4979900){
+
+        return 10000 + (monedas - 29900) / 5;
+
+    } else {
+
+        return 1000000 + (monedas - 4979900) / 7;
+    }
+}
+
+long long consumo( long long energia){
+
+    if(energia <= 100){
+        return energia * 2;
+
+    } else if (energia <= 10000){
+
+        return 200 + (energia - 100) * 3;
+
+    } else if(energia <= 1000000){
+
+        return 29900 + (energia - 10000) * 5;
+
+    } else {
+
+        return 4979900 + (energia - 1000000) * 7;
+    }
+}
+
+int main(){
+
+    long long A, B;
+    cin >> A >> B;
+
+    long long total = dineroConsumo(A);
+
+    long long inicio = 0, fin = total / 2;
+    long long precioTotal = 0;
+
+    while( inicio <= fin){
+        long long med = inicio + (fin - inicio)/2;
+
+        long long deducion = total - med;
+        long long mi_factura = consumo(med);
+        long long factura_vecino = consumo(deducion);
+
+        long long diferencia = factura_vecino - mi_factura;
+
+        if(diferencia == B){
+            cout<< mi_factura << endl;
+            return 0;
+        } else if (diferencia > B){
+            inicio = med +1;
+        } else if (diferencia < B){
+            fin = med -1;
+        }
+    }
+
+    cout << 0 << "\n";
+
+    return 0;
+}
